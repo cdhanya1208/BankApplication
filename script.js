@@ -1,8 +1,8 @@
 function createAccount(){
-  var user_name = document.forms.signup_form.elements.username;
-  var acc_no = document.forms.signup_form.elements.signup_acc_no;
-  var psw = document.forms.signup_form.elements.psw1;
-  var conf_psw = document.forms.signup_form.elements.psw2;
+  var user_name = document.forms.signup_form.elements.user_name.value;
+  var acc_no = document.forms.signup_form.elements.signup_acc_no.value;
+  var psw = document.forms.signup_form.elements.psw1.value;
+  var conf_psw = document.forms.signup_form.elements.psw2.value;
   if(psw==conf_psw){
    let obj = new Object();
    obj = {
@@ -14,12 +14,13 @@ function createAccount(){
    alert("Account created successfully!");
   }
   else{
+    alert(user_name);
     alert("Password Mismatch!!");
   }
 }
 function login(){
-  var acc_no = document.forms.login_form.elements.login_acc_no;
-  var psw = document.forms.login_form.elements.psw;
+  var acc_no = document.forms.login_form.elements.login_acc_no.value;
+  var psw = document.forms.login_form.elements.psw.value;
   var user = JSON.parse(localStorage.getItem(acc_no));
   if(user.psw==psw){
    sessionStorage.setItem("user_accno",acc_no);
@@ -35,7 +36,7 @@ function showBalance(){
   document.getElementById("demo1").innerHTML = amt_balance;
 }
 function withDraw(){
-  var amt = parseInt(document.forms.withdraw_form.elements.withdraw_amt);
+  var amt = parseInt(document.forms.withdraw_form.elements.withdraw_amt.value);
   var amt_balance = 0;
   var acc_no = sessionStorage.getItem("user_accno");
   var user =  JSON.parse(localStorage.getItem(acc_no));
@@ -49,7 +50,7 @@ function withDraw(){
   }
 }
 function deposit(){
-  var amt = parseInt(document.forms.deposit_form.elements.deposit_amt);
+  var amt = parseInt(document.forms.deposit_form.elements.deposit_amt.value);
   var amt_balance = 0;
   var acc_no = sessionStorage.getItem("user_accno");
   var user =  JSON.parse(localStorage.getItem(acc_no));
