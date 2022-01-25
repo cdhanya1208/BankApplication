@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head><title>Banking Portal</title></head>
+<link rel="stylesheet" href="styles.css">
+<body>
+ <ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#checkBalance">checkBalance</a></li>
+  <li><a href="#Deposit">Deposit</a></li>
+  <li><a href="#withDraw">withDraw</a></li>
+  <button class="button" id="loginBtn">Login</button>
+  <button class="button" id="signupBtn">Sign Up</button>
+  <li id="demo" class="msg"></li>
+  </ul>
+  <!-- The Login Modal -->
+  <div id="loginModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="login_close">&times;</span>
+      <form>
+      <h3>Login</h3>
+      <label for="login_acc_no">Account No</label><br>
+      <input type="text" name="login_acc_no" id="login_acc_no" required></input><br><br>
+      <label for="psw">Password</label><br>
+      <input type="password" name="psw" id="psw" required></input><br><br>
+      <button type="submit" onclick="login()">Submit</button>
+      </form>
+    </div>
+  </div>
+  <!-- The Signup Modal -->
+  <div id="signupModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="signup_close">&times;</span>
+      <h3>SignUp</h3>
+      <form>
+      <label for="username">Name</label><br>
+      <input type="text" name="username" id="username" required></input><br><br>
+      <label for="signup_acc_no">Account No</label><br>
+      <input type="text" name="signup_acc_no" id="signup_acc_no" required></input><br><br>
+      <label for="psw1">Set Password</label><br>
+      <input type="password" name="psw1" id="psw1" required></input><br><br>
+      <label for="psw2">Confirm Password</label><br>
+      <input type="password" name="psw2" id="psw2" required></input><br><br>
+      <button type="submit" onclick="createAccount()">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Image Gallery --> 
+  <div id="home">
+  <div class="row"> 
+    <div class="column">
+      <img src="images/img1.jpg" style="width:100%">
+      <img src="images/img8.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="images/img2.jpg" style="width:100%">
+      <img src="images/img7.jpg" style="width:100%">
+    </div>  
+    <div class="column">
+      <img src="images/img3.jpg" style="width:100%">
+      <img src="images/img6.jpg" style="width:100%">
+    </div>
+    <div class="column">
+        <img src="images/img4.jpg" style="width:100%">
+        <img src="images/img5.jpg" style="width:100%">
+    </div>
+  </div>
+  </div>
+  <br>
+  <div id="checkBalance" class="border">
+  <button class="_btn" onclick="showBalance()">checkBalance</button> 
+  <div style="display: inline; font-size: larger;">
+  Balance Amount : <div id="demo1" style="font-size:large;display:inline;"></div>
+  </div>
+  </div>
+  <br>
+  
+  <div id="Deposit" class="border">
+  <h4>Deposit Section</h4>
+  <form>
+  <label for=""> Enter Amount: </label>
+  <input type="number" id=deposit_amt name="deposit_amt"></input>
+  <button class="_btn" onclick="deposit()">Deposit</button> 
+  </form>
+  </div>
+  <br>
+  
+  <div id="withDraw" class="border">
+    <h4>withDraw Section</h4>
+    <form>
+    <label for=""> Enter Amount: </label>
+    <input type="number" id=withdraw_amt name="withdraw_amt"></input>
+    <button class="_btn" onclick="withDraw()">withDraw</button> 
+    </form>
+   </div>
+   <br><br>
+   <hr>
+</body>
+<script src="script.js"></script>
+<script>
+var acc_no = sessionStorage.getItem("user_accno");
+if(acc_no != null){
+  var user = JSON.parse(localStorage.getItem(acc_no));
+  document.getElementById("demo").innerHTML = "Hi! "+ user.user_name;
+}
+var loginmodal = document.getElementById("loginModal");
+var loginbtn = document.getElementById("loginBtn");
+var loginspan = document.getElementsByClassName("login_close")[0]; 
+
+loginbtn.onclick = function() {
+  loginmodal.style.display = "block";
+}
+loginspan.onclick = function() {
+  loginmodal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == loginmodal) {
+    loginmodal.style.display = "none";
+  }
+}
+
+var signupmodal = document.getElementById("signupModal");
+var signupbtn = document.getElementById("signupBtn");
+var signupspan = document.getElementsByClassName("signup_close")[0]; 
+
+signupbtn.onclick = function() {
+  signupmodal.style.display = "block";
+}
+signupspan.onclick = function() {
+  signupmodal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == signupmodal) {
+    signupmodal.style.display = "none";
+  }
+}
+
+
+</script>
+</html>
+
