@@ -1,5 +1,5 @@
 function createAccount(){
-  var user_name = document.forms.signup_form.elements.user_name.value;
+  var user_name = document.forms.signup_form.elements.username.value;
   var acc_no = document.forms.signup_form.elements.signup_acc_no.value;
   var psw = document.forms.signup_form.elements.psw1.value;
   var conf_psw = document.forms.signup_form.elements.psw2.value;
