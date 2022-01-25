@@ -12,9 +12,9 @@ function createAccount(){
    }
    localStorage.setItem(acc_no, JSON.stringify(obj));
    alert("Account created successfully!");
+   alert("Please Login to continue!!");
   }
   else{
-    alert(user_name);
     alert("Password Mismatch!!");
   }
 }
@@ -37,6 +37,9 @@ function showBalance(){
 }
 function withDraw(){
   var amt = parseInt(document.forms.withdraw_form.elements.withdraw_amt.value);
+  if(isNaN(amt))
+   alert("Please enter an amount!!");
+  else{
   var amt_balance = 0;
   var acc_no = sessionStorage.getItem("user_accno");
   var user =  JSON.parse(localStorage.getItem(acc_no));
@@ -48,9 +51,13 @@ function withDraw(){
     localStorage.setItem(acc_no,JSON.stringify(user));
     alert("Withdraw successful");
   }
+  }
 }
 function deposit(){
   var amt = parseInt(document.forms.deposit_form.elements.deposit_amt.value);
+  if(isNaN(amt))
+   alert("Please enter an amount!!");
+  else{
   var amt_balance = 0;
   var acc_no = sessionStorage.getItem("user_accno");
   var user =  JSON.parse(localStorage.getItem(acc_no));
@@ -58,4 +65,5 @@ function deposit(){
   user.amt = amt_balance;
   localStorage.setItem(acc_no,JSON.stringify(user));
   alert("Deposited");
+  }
 }
